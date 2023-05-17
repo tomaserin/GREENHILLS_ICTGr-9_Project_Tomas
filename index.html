@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Length Conversion Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+      background-color: #E8E8E8;
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: black;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    select {
+      padding: 5px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: dimgray;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #result {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Length Calculator</h1>
+
+    <div id="inputForm">
+      <label for="inputLength">Millimeters:</label>
+      <input type="number" id="inputLength" min="0" step="any">
+      <br><br>
+      <label for="selectUnit">Select Unit:</label>
+      <select id="selectUnit">
+        <option value="cm">Centimeters (CM)</option>
+        <option value="m">Meters (M)</option>
+        <option value="km">Kilometers (KM)</option>
+      </select>
+      <br><br>
+      <button onclick="convertLength()">Convert</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertLength() {
+      var inputLength = document.getElementById("inputLength").value;
+      var selectUnit = document.getElementById("selectUnit").value;
+      var resultDiv = document.getElementById("result");
+      var result;
+
+      if (selectUnit === "cm") {
+        result = inputLength / 10;
+        resultDiv.innerHTML = inputLength + " millimeters = " + result + " centimeters";
+      } else if (selectUnit === "m") {
+        result = inputLength / 1000;
+        resultDiv.innerHTML = inputLength + " millimeters = " + result + " meters";
+      } else if (selectUnit === "km") {
+        result = inputLength / 1000000;
+        resultDiv.innerHTML = inputLength + " millimeters = " + result + " kilometers";
+      }
+    }
+  </script>
+</body>
+</html>
